@@ -1,0 +1,24 @@
+//# Responsive property
+@mixin resp-prop(
+  $property: font-size,
+  $startValue: 24,
+  $endValue: 12,
+  $maxBreakpoint: $contWidth,
+  $minBreakPoint: $mobileWidth,
+  $exit: 0
+) {
+  #{$property}: $startValue + px;
+
+  @media (max-width: #{$maxBreakpoint + px}) {
+    #{$property}: calc(
+      (#{$endValue + px}) + ($startValue - $endValue) *
+        ((100vw - #{$minBreakPoint + px}) / ($maxBreakpoint - $minBreakPoint))
+    );
+
+    @if ($exit == 0) {
+      @media (max-width: #{$minBreakPoint + px}) {
+        #{$property}: $endValue + px;
+      }
+    }
+  }
+}

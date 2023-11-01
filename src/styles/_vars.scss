@@ -1,0 +1,54 @@
+//# Main styles
+$html-font-size: 16;
+
+//# Розміри екрану
+$contWidth: 1280; // Ширина основного контейнеру
+$contPadWidth: 20; // Ширина відступу контейнеру
+$contWidthSum: calc($contWidth + ($contPadWidth * 2)); // Сума ширини контейнеру
+$mobileWidth: 320; // Мінімальна ширина екрану
+
+$mobile-320: 320;
+$mobile-480: 480;
+$tablet-768: 768;
+$laptop-1024: 1024;
+$pc-1280: 1280;
+$pc-1600: 1600;
+$pc-1920: 1920;
+
+//# Breakpoints (розміри екрану в пікселях)
+$px-contWidth: #{$contWidth}px; // Ширина основного контейнеру
+$px-contPadWidth: #{$contPadWidth}px; // Ширина відступу контейнеру
+$px-contWidthSum: #{$contWidthSum}px; // Сума ширини контейнеру
+$px-mobileWidth: #{$mobileWidth}px; // Мінімальна ширина екрану
+
+$px-mobile-320: #{$mobile-320}px;
+$px-mobile-480: #{$mobile-480}px;
+$px-tablet-768: #{$tablet-768}px;
+$px-laptop-1024: #{$laptop-1024}px;
+$px-pc-1280: #{$pc-1280}px;
+$px-pc-1600: #{$pc-1600}px;
+$px-pc-1920: #{$pc-1920}px;
+
+//# Colors
+
+//# Other
+
+//# Themes
+:root {
+  --main-color: rgba(255, 255, 245, 0.86);
+  --second-color: #fff;
+  --mute-color: rgba(235, 235, 245, 0.6);
+  --main-text-color: #161618;
+  --second-text-color: #1e1e20;
+
+  --hero-name-background: linear-gradient(120deg, #bd34fe 30%, #41d1ff);
+  --brand-color: #646cff;
+  --brand-light-color: #747bff;
+}
+[data-theme='dark'] {
+  --main-color: #1e1e20;
+  --second-color: #161618;
+  --mute-color: #313136;
+  --main-text-color: rgba(255, 255, 245, 0.86);
+  --second-text-color: rgba(235, 235, 245, 0.6);
+}
