@@ -48,7 +48,6 @@ class Product {
 
       //# if we have preloader
       if (this.props.loader) this._loader();
-      console.log(this);
     } catch (e) {
       //! displaying the error
       console.error(e.message);
