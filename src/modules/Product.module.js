@@ -34,8 +34,9 @@ class Product {
       // loader {
       //   imgEl,
       //   loaderEl,
+      //   tag,
       // },
-    }
+    },
   ) {
     this.productData = productData;
     this.props = props;
@@ -47,6 +48,7 @@ class Product {
 
       //# if we have preloader
       if (this.props.loader) this._loader();
+      console.log(this);
     } catch (e) {
       //! displaying the error
       console.error(e.message);
@@ -67,15 +69,17 @@ class Product {
 
     // set default class name for the product (if property !== false and !== '' || false)
     // empty string '' will disable creating of the class attribute
-    if (!this.props.className && this.props.className !== ('' || false))
-      this.props.className = 'item';
+    if (!this.props.className && this.props.className !== ('' || false)) this.props.className = 'item';
+
+    // tag name of current product
+    if (!this.props.tag) this.props.tag = 'div';
   }
 
   //# Creating product and display in parent container
 
   _createProduct() {
     // creating new product element
-    const productEl = document.createElement('div');
+    const productEl = document.createElement(this.props.tag);
 
     // set class attribute to the new element if we have the class attribute (default class name: 'item')
     if (this.props.className) productEl.classList.add(this.props.className);
@@ -101,28 +105,17 @@ class Product {
 
   _loader() {
     // set image and loader selectors to class properties
-    this.props.loader.imgEl = this.productEl.querySelector(
-      this.props.loader.imgEl
-    );
-    this.props.loader.loaderEl = this.productEl.querySelector(
-      this.props.loader.loaderEl
-    );
+    this.props.loader.imgEl = this.productEl.querySelector(this.props.loader.imgEl);
+    this.props.loader.loaderEl = this.productEl.querySelector(this.props.loader.loaderEl);
 
     // if image or loader do not exist)
-    if (!(this.props.loader.imgEl && this.props.loader.loaderEl))
-      throw new Error(
-        'The connection does not exist between image and loader. Check the selectors are right'
-      );
+    if (!(this.props.loader.imgEl && this.props.loader.loaderEl)) throw new Error('The connection does not exist between image and loader. Check the selectors are right');
 
     // set load event on the image
-    this.props.loader.imgEl.addEventListener(
-      'load',
-      () => (this.props.loader.loaderEl.style.display = 'none')
-    );
+    this.props.loader.imgEl.addEventListener('load', () => (this.props.loader.loaderEl.style.display = 'none'));
 
     // if the image has already loaded
-    if (this.props.loader.imgEl.complete)
-      this.props.loader.loaderEl.style.display = 'none';
+    if (this.props.loader.imgEl.complete) this.props.loader.loaderEl.style.display = 'none';
 
     return this.product;
   }
