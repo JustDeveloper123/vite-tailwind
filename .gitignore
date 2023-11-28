@@ -12,8 +12,8 @@ dist
 dist-ssr
 *.local
 
-# Optimized files
-src/img/webp 
+# Optimized files (if we have script in vite.config for this)
+public/img/webp/
 
 # Editor directories and files
 .vscode/*
