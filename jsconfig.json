@@ -4,9 +4,9 @@
     "paths": {
       "@": ["src/*"],
       "@styles": ["src/styles/*"],
-      "@modules": ["src/modules"],
-      "@scripts": ["src/scripts"],
-      "@templates": ["src/templates"]
+      "@modules": ["src/modules/*"],
+      "@scripts": ["src/scripts/*"],
+      "@templates": ["src/templates/*"]
     }
   }
 }
