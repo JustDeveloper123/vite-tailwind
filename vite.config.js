@@ -52,6 +52,17 @@ export default defineConfig({
     },
   },
 
+  //# Aliases
+  resolve: {
+    alias: {
+      '@': './src',
+      '@styles': './src/styles',
+      '@modules': './src/modules',
+      '@scripts': './src/scripts',
+      '@templates': './src/templates',
+    },
+  },
+
   //# Production
   build: {
     rollupOptions: {

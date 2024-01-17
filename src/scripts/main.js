@@ -1,4 +1,4 @@
-import '../styles/style.scss'; // page styles
+import '@styles/style.scss'; // page styles
 
 import './_footer';
 import jsLogo from '/img/js.png';
