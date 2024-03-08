@@ -6,7 +6,7 @@ import injectHTML from 'vite-plugin-html-inject'; // insert separate parts of HT
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
-  base: '/vite-tailwind-js/', // name of the github repo for deployment
+  base: '/vite-tailwind/', // name of the github repo for deployment
 
   //# Plugins
   plugins: [

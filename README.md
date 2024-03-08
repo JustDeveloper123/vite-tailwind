@@ -2,12 +2,12 @@
 
 ```
 npm install -g degit
-npx degit https://github.com/JustDeveloper123/vite-tailwind-js.git
+npx degit https://github.com/JustDeveloper123/vite-tailwind.git
 ```
 
 or:
 
 ```
 npm install -g degit
-npx degit JustDeveloper123/vite-tailwind-js
+npx degit JustDeveloper123/vite-tailwind
 ```
