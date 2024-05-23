@@ -1,15 +1,13 @@
-import autoprefixer from 'autoprefixer';
 import imagemin from 'imagemin';
 import imageminWebp from 'imagemin-webp';
 import { resolve } from 'path';
-import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import injectHTML from 'vite-plugin-html-inject';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig(() => {
   return {
-    base: '/vite-tailwind/', // name of the github repo for deployment to github actions
+    base: '/vite-vanilla/', // name of the github repo for deployment to github actions
     envPrefix: 'APP_',
 
     //# Aliases
@@ -77,18 +75,12 @@ export default defineConfig(() => {
         ...imagemin(
           ['./public/**/*.{jpg,png,jpeg}'], // images for the webp folder
           {
-            destination: './public/img/webp/', // custom output path
+            destination: './public/img/webp', // custom output path
             plugins: [imageminWebp({ quality: 70 })],
           },
         ),
         apply: 'serve',
       },
     ],
-
-    css: {
-      postcss: {
-        plugins: [autoprefixer(), tailwindcss()],
-      },
-    },
   };
 });

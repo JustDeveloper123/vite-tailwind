@@ -14,8 +14,7 @@ dist-ssr
 
 #! Delete this is we do not use the webp script in vite config file
 # Optimized files (if we have the script in vite config for this)
-public/img/*
-!public/img/webp
+public/img/
 
 # Editor directories and files
 .vscode/*
