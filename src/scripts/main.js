@@ -1,7 +1,7 @@
 import '@styles/style.scss'; // page styles
 
 import './_footer';
-import jsLogo from '/img/js.png';
+import jsLogo from '/img/webp/js.webp';
 
 const imgEl = document.createElement('img');
 imgEl.src = jsLogo;
