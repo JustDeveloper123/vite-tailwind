@@ -5,9 +5,10 @@ import { defineConfig } from 'vite';
 import injectHTML from 'vite-plugin-html-inject';
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
+// https://vitejs.dev/config/
 export default defineConfig(() => {
   return {
-    base: '/vite-tailwind/', // name of the github repo for deployment to github actions
+    base: '/vite-tailwind/', // назва репозиторію для деплою на GitHub Actions
     envPrefix: 'APP_',
 
     //# Aliases
@@ -27,7 +28,7 @@ export default defineConfig(() => {
       outDir: 'build',
       rollupOptions: {
         input: {
-          // Production paths
+          // шляхи до використовуваних сторінок, щоб при збірці проекту знаходило всі сторінки
           main: resolve(__dirname, 'index.html'),
         },
       },
@@ -46,14 +47,16 @@ export default defineConfig(() => {
 
     //# Plugins
     plugins: [
-      // Insert html parts
+      // Легкий пакет для поєднання/вставлення HTML файлів/частин
       injectHTML({
         debug: {
-          logPath: true, // Debugging
+          logPath: true, // стежимо за логами
         },
-      }), // this plugin can have arguments
+      }),
 
-      // Image optimizer
+      // Оптимізація фото (по бажанню)
+      // Плагін має свою готову конфігурацію, ми можемо змінювати налаштування, для різних форматів фото тощо
+      // https://github.com/FatehAK/vite-plugin-image-optimizer
       ViteImageOptimizer({
         png: {
           quality: 70,
@@ -66,17 +69,15 @@ export default defineConfig(() => {
         },
       }),
 
-      // Script to create a folder with .webp images if we need (optional)
-      // for this we need to run the following command:
-      // npm install imagemin imagemin-webp
-      // then import these packages into our vite config like here below
-      // just delete it if you do not need it
+      // Конвертація фото в webp формат при потребі. Якщо не треба то видаляємо скрипт нижче. Не забути видалити непотрібні пакети!
+      // Скрипт для конвертації в .webp формат, створює нову папку, по якій можна діставати оброблені картинки
+      // Для скрипту потрібно встановити додаткові плагіни: npm install -D imagemin imagemin-webp . Звісно, імпортуємо в конфіг
       {
         ...imagemin(
-          ['./public/**/*.{jpg,png,jpeg}'], // images for the webp folder
+          ['./public/**/*.{jpg,png,jpeg}'], // шлях до фото для обробки в webp
           {
-            destination: './public/img/webp', // custom output path
-            plugins: [imageminWebp({ quality: 70 })],
+            destination: './public/webp', // шлях конвертованих фото
+            plugins: [imageminWebp({ quality: 70 })], // якість конвертації
           },
         ),
         apply: 'serve',
